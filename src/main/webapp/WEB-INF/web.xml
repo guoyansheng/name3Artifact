@@ -10,7 +10,7 @@
             <param-value>UTF-8</param-value>
         </init-param>
     </filter>
-    <filter>
+    <filter> 
     	<description>
     	</description>
     	<display-name>LoginFilter</display-name>

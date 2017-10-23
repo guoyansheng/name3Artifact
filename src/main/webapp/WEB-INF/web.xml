@@ -10,9 +10,20 @@
             <param-value>UTF-8</param-value>
         </init-param>
     </filter>
+    <filter>
+    	<description>
+    	</description>
+    	<display-name>LoginFilter</display-name>
+    	<filter-name>LoginFilter</filter-name>
+    	<filter-class>com.guo.filter.LoginFilter</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+    	<filter-name>LoginFilter</filter-name>
+    	<url-pattern>/LoginFilter</url-pattern>
     </filter-mapping>
     
     <!-- 配置文件所在位置 -->
@@ -34,11 +45,27 @@
             <param-value>classpath:spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
     </servlet>
     <servlet-mapping>
         <servlet-name>springDispatcherServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>*.htm</url-pattern>
+        <url-pattern>*.json</url-pattern>
     </servlet-mapping>
+    
+    
+    <filter>
+	<filter-name>simplelogin</filter-name>
+	<filter-class>com.guo.filter.LoginFilter</filter-class>
+	<init-param>
+		<param-name>hello</param-name>
+		<param-value>hello filter</param-value>
+	</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>simplelogin</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
     
     <welcome-file-list>
       <welcome-file>index.html</welcome-file>

@@ -12,7 +12,12 @@
      http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- 自动注入 -->
-    <context:component-scan base-package="com.huawei.service.impl" />
+    <context:component-scan base-package="com.guo.service.impl" />
+    <!-- 若不用注解配置service,可以使用下面的方式 -->
+    <!-- <bean id="personService" class="com.guo.service.impl.PersonServiceImpl"></bean> -->
+    
+    
+    
     <!-- 加载properties文件  -->
     <!--  <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">

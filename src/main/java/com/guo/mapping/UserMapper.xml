@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guo.dao.UserMapper">
+  <resultMap id="BaseMap" type="com.guo.model.modelDo.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="login_name_email" jdbcType="VARCHAR" property="loginNameEmail" />
+    <result column="login_name_mobile" jdbcType="VARCHAR" property="loginNameMobile" />
+    <result column="login_password" jdbcType="VARCHAR" property="loginPassword" />
+    <result column="payment_password" jdbcType="VARCHAR" property="paymentPassword" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="cert_type" jdbcType="VARCHAR" property="certType" />
+    <result column="cert_No" jdbcType="VARCHAR" property="certNo" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="mobile_no" jdbcType="VARCHAR" property="mobileNo" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="birthdate" jdbcType="DATE" property="birthdate" />
+    <result column="constellation" jdbcType="VARCHAR" property="constellation" />
+    <result column="age" jdbcType="SMALLINT" property="age" />
+    <result column="income" jdbcType="INTEGER" property="income" />
+    <result column="height" jdbcType="SMALLINT" property="height" />
+    <result column="weight" jdbcType="SMALLINT" property="weight" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="interest" jdbcType="VARCHAR" property="interest" />
+    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, user_id, login_name_email, login_name_mobile, login_password, payment_password, 
+    nick_name, real_name, cert_type, cert_No, state, address, phone, mobile_no, email, 
+    birthdate, constellation, age, income, height, weight, job, interest, introduce, 
+    note
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.guo.model.modelDo.User" useGeneratedKeys="true" keyProperty="id">
+    insert into user (id, user_id, login_name_email, 
+      login_name_mobile, login_password, payment_password, 
+      nick_name, real_name, cert_type, 
+      cert_No, state, address, 
+      phone, mobile_no, email, 
+      birthdate, constellation, age, 
+      income, height, weight, 
+      job, interest, introduce, 
+      note)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{loginNameEmail,jdbcType=VARCHAR}, 
+      #{loginNameMobile,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, #{paymentPassword,jdbcType=VARCHAR}, 
+      #{nickName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{certType,jdbcType=VARCHAR}, 
+      #{certNo,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{mobileNo,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{birthdate,jdbcType=DATE}, #{constellation,jdbcType=VARCHAR}, #{age,jdbcType=SMALLINT}, 
+      #{income,jdbcType=INTEGER}, #{height,jdbcType=SMALLINT}, #{weight,jdbcType=SMALLINT}, 
+      #{job,jdbcType=VARCHAR}, #{interest,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR});
+  </insert>
+  <insert id="insertSelective" parameterType="com.guo.model.modelDo.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="loginNameEmail != null">
+        login_name_email,
+      </if>
+      <if test="loginNameMobile != null">
+        login_name_mobile,
+      </if>
+      <if test="loginPassword != null">
+        login_password,
+      </if>
+      <if test="paymentPassword != null">
+        payment_password,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="certType != null">
+        cert_type,
+      </if>
+      <if test="certNo != null">
+        cert_No,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="mobileNo != null">
+        mobile_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="birthdate != null">
+        birthdate,
+      </if>
+      <if test="constellation != null">
+        constellation,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="income != null">
+        income,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+      <if test="interest != null">
+        interest,
+      </if>
+      <if test="introduce != null">
+        introduce,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginNameEmail != null">
+        #{loginNameEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="loginNameMobile != null">
+        #{loginNameMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null">
+        #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentPassword != null">
+        #{paymentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null">
+        #{certType,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null">
+        #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null">
+        #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null">
+        #{birthdate,jdbcType=DATE},
+      </if>
+      <if test="constellation != null">
+        #{constellation,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=SMALLINT},
+      </if>
+      <if test="income != null">
+        #{income,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=SMALLINT},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=SMALLINT},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null">
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guo.model.modelDo.UserExample" resultType="java.lang.Integer">
+    select count(*) from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guo.model.modelDo.User">
+    update user
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginNameEmail != null">
+        login_name_email = #{loginNameEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="loginNameMobile != null">
+        login_name_mobile = #{loginNameMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null">
+        login_password = #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentPassword != null">
+        payment_password = #{paymentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null">
+        cert_type = #{certType,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null">
+        cert_No = #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null">
+        mobile_no = #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null">
+        birthdate = #{birthdate,jdbcType=DATE},
+      </if>
+      <if test="constellation != null">
+        constellation = #{constellation,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=SMALLINT},
+      </if>
+      <if test="income != null">
+        income = #{income,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=SMALLINT},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=SMALLINT},
+      </if>
+      <if test="job != null">
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        interest = #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null">
+        introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guo.model.modelDo.User">
+    update user
+    set user_id = #{userId,jdbcType=VARCHAR},
+      login_name_email = #{loginNameEmail,jdbcType=VARCHAR},
+      login_name_mobile = #{loginNameMobile,jdbcType=VARCHAR},
+      login_password = #{loginPassword,jdbcType=VARCHAR},
+      payment_password = #{paymentPassword,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      cert_type = #{certType,jdbcType=VARCHAR},
+      cert_No = #{certNo,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      mobile_no = #{mobileNo,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      birthdate = #{birthdate,jdbcType=DATE},
+      constellation = #{constellation,jdbcType=VARCHAR},
+      age = #{age,jdbcType=SMALLINT},
+      income = #{income,jdbcType=INTEGER},
+      height = #{height,jdbcType=SMALLINT},
+      weight = #{weight,jdbcType=SMALLINT},
+      job = #{job,jdbcType=VARCHAR},
+      interest = #{interest,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+ 
+</mapper>

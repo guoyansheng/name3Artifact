@@ -1,0 +1,13 @@
+echo # testGit  README.md
+git init
+git add README.md
+git commit -m first commit
+git remote add origin httpsgithub.comguoyanshengtestGit.git
+git push -u origin master
+
+
+ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAnXUalj9bhrOQv0Lq08nPApDXhfuqePKVijTeSzWh1R3P2ZoIq4pc991Hd5opvITMmNBBqZdtN0exT9OZ4Sb2vH7Bpduh+8dWKxlK/cjRutH0WbeP36m5hKE6VXUAWteD1bw/ZK+BA1nKFBWZf2UrimxhnHnZphuft+VEPko5GFhMrKYEvRWHKufJd4uLhn1F67PVFrLAwTlf3vV53lmQPhpSVPNfzZNp9uytIn7v1zTDAflczLnbYiG408jVZ3Gvl80/poy4Kb33Q27Ly5tvJSqQXurkV7ltS8P2SwwofvGvweMzM9y0nbvD+WF6B9RZOLichdIBBz1LeOQ5k3triw== rsa-key-20160613
+
+ssh-rsa 2048 c6:90:f2:1d:44:d5:0e:d8:2b:d7:70:b9:aa:08:4f:86
+
+rsa-key-20160613

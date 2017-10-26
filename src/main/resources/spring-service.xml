@@ -13,9 +13,13 @@
 
     <!-- 自动注入 -->
     <context:component-scan base-package="com.guo.service.impl" />
+      
     <!-- 若不用注解配置service,可以使用下面的方式 -->
-    <!-- <bean id="personService" class="com.guo.service.impl.PersonServiceImpl"></bean> -->
-    
+    <!-- 
+    <bean id="loginService" class="com.guo.service.impl.LoginServiceImpl"></bean>
+    <bean id="personService" class="com.guo.service.impl.PersonServiceImpl"></bean>
+    <bean id="registerServiceImpl" class="com.guo.service.impl.RegisterServiceImpl"></bean> 
+    -->
     
     
     <!-- 加载properties文件  -->

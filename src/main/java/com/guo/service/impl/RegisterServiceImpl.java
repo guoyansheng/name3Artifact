@@ -20,7 +20,7 @@ import com.guo.service.RegisterService;
 import com.guo.util.DateUtil;
 
 /**
- * 注册、补全、激活
+ * 娉ㄥ唽銆佽ˉ鍏ㄣ�佹縺娲�
  * 
  * @author Administrator
  *
@@ -44,7 +44,7 @@ public class RegisterServiceImpl implements RegisterService {
 		transactionTemplate.execute(new TransactionCallback<UserVO>() {
 			@Override
 			public UserVO doInTransaction(TransactionStatus status) {
-				// 1.对象转换
+				// 1.瀵硅薄杞崲
 				User user = new User();
 				BeanUtils.copyProperties(userVO, user);
 				String birthdateStr = userVO.getBirthdateStr();
@@ -53,10 +53,10 @@ public class RegisterServiceImpl implements RegisterService {
 					user.setBirthdate(birthdate);
 				}
 				
-				// 2.插入数据
-				//返回的主键在User.id中
+				// 2.鎻掑叆鏁版嵁
+				//杩斿洖鐨勪富閿湪User.id涓�
 				userMapper.insert(user);
-				// 3.查询数据
+				// 3.鏌ヨ鏁版嵁
 				user = userMapper.selectByPrimaryKey(user.getId());
 				BeanUtils.copyProperties(user, userVO2);
 				userVO.setBirthdateStr(birthdateStr);

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.guo.model.modelDo.Person;
 import com.guo.service.PersonService;
+import com.guo.util.ConvertUtil;
 
 @Controller
 @RequestMapping("/personController")
 public class PersonController extends BaseController{
+	private static Logger logger = Logger.getLogger(PersonController.class);
 	@Autowired
     private PersonService personService;
     
@@ -35,6 +38,7 @@ public class PersonController extends BaseController{
     public String showPersons(Model model){
         List<Person> persons = personService.loadPersons();
         model.addAttribute("persons", persons);
+        logger.info("-------------------------------------------");
         return "showperson.jsp";
     }
     @RequestMapping("/test.json")
@@ -45,7 +49,7 @@ public class PersonController extends BaseController{
         Map<String,Object> jsonMap = new HashMap<String,Object>();
          
         try {
-            //设置页面不缓存
+            //璁剧疆椤甸潰涓嶇紦瀛�
             response.setContentType("application/json");
             response.setHeader("Pragma", "No-cache");
             response.setHeader("Cache-Control", "no-cache");

@@ -28,5 +28,5 @@
     <!-- 可以加上默认的.jsp后缀 -->
     <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
         p:prefix="/" p:suffix=".jsp" /> -->
-
+	
 </beans>

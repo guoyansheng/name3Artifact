@@ -61,7 +61,7 @@ mocks_data/proxy/**/_*
 .mtj.tmp/
 
 # Package Files #
-*.jar
+
 *.war
 *.ear
 *.zip

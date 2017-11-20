@@ -14,8 +14,8 @@
 
 
 	<!-- 有点儿类似JDK的形式  参数address是访问地址  implementor是实现者(最开始测试可以使用服务类com.itcast.ws.CXFService，但是后面和spring配置文件整合的时候就㤇使用bean的#ID了)-->
-    
-    <jaxws:endpoint implementor="#cxfService" address="/hello"/>
+    <!-- http://localhost:8080/name3Artifact/cxf/cxfService?wsdl -->
+    <jaxws:endpoint implementor="#cxfService" address="/cxfService"/>
     <!-- 方便本应用自己调用 -->
     <bean id="cxfService" class="com.guows.service.CXFServiceImpl"></bean>
     

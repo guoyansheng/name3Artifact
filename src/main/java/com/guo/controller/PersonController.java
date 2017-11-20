@@ -18,6 +18,10 @@ import com.guo.model.modelDo.Person;
 import com.guo.service.PersonService;
 import com.guo.util.ConvertUtil;
 
+/**
+ * @author Administrator
+ * 
+ */
 @Controller
 @RequestMapping("/personController")
 public class PersonController extends BaseController{

@@ -3,6 +3,6 @@
 <mapper namespace="com.guo.dao.PersonMapper">
     <!-- 查询所有person -->  
     <select id="queryAll" resultType="Person" >  
-        select * from person  
+        select * from person  where 
     </select>
 </mapper>
